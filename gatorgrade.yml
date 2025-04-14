@@ -1,0 +1,286 @@
+setup: |
+  echo "🐊 Attempt to install ruff"
+  echo "🐊 Will not re-install if already installed"
+  pipx install ruff
+targets:
+  PLO1:
+    - R: 60          # Expressed as a percentage
+  PLO2:
+    - R: 60          # Expressed as a percentage
+thresholds:
+  PLO1:
+    - I: 0           # Expressed as a raw number of checks
+    - D: 3           # Expressed as a raw number of checks 
+    - R: 7           # Expressed as a raw number of checks
+    - P: 10           # Expressed as a raw number of checks
+  PLO2:
+    - I: 0           # Expressed as a raw number of checks
+    - D: 10           # Expressed as a raw number of checks
+    - R: 15           # Expressed as a raw number of checks
+    - P: 20           # Expressed as a raw number of checks
+---
+# findRange.py
+- src/findRange.py:
+    - description: Ensure that findRange.py file exists in the src/ directory
+      check: ConfirmFileExists
+      objectives:
+        CLO2:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program for range calculation (PLO2)"
+        CLO3:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program for range calculation (PLO1 & PLO2)"
+    - description: No TODOs remain in the findRange.py file
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: true
+      objectives:
+        CLO2:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program for range calculation (PLO2)"
+        CLO3:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program for range calculation (PLO1 & PLO2)"
+- description: findRange.py main() returns the correct output
+  check: MatchCommandFragment
+  options:
+    command: "python src/findRange.py"
+    fragment: "Lowest: 60 Highest: 1200 Range: 1140"
+    count: 1
+    exact: true
+  objectives:
+    CLO2:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write Python program for range calculation (PLO2)"
+    CLO3:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write Python program for range calculation (PLO1 & PLO2)"
+# is_prime
+- src/isPrime.py:
+    - description: Ensure that isPrime.py file exists in the src/ directory
+      check: ConfirmFileExists
+      objectives:
+        CLO2:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program to determine primality (PLO2)"
+        CLO3:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program to determine primality (PLO1 & PLO2)"
+    - description: No TODOs remain in the isPrime.py file
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: true
+      objectives:
+        CLO2:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program to determine primality (PLO2)"
+        CLO3:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program to determine primality (PLO1 & PLO2)"
+- description: isPrime.py main() returns the correct output
+  check: MatchCommandFragment
+  options:
+    command: "python src/isPrime.py"
+    fragment: "101: Prime number"
+    count: 1
+    exact: true
+  objectives:
+    CLO2:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write Python program to determine primality (PLO2)"
+    CLO3:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write Python program to determine primality (PLO1 & PLO2)"
+# quadraticRoots.py
+- src/quadraticRoots.py:
+    - description: Ensure that quadraticRoots.py file exists in the src/ directory
+      check: ConfirmFileExists
+      objectives:
+        CLO2:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program to determine quadratic roots (PLO2)"
+        CLO3:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program to determine quadratic roots (PLO1 & PLO2)"
+    - description: No TODOs remain in the quadraticRoots.py file
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: true
+      objectives:
+        CLO2:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program to determine quadratic roots (PLO2)"
+        CLO3:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write Python program to determine quadratic roots (PLO1 & PLO2)"
+- description: quadraticRoots.py main() returns the correct output
+  check: MatchCommandFragment
+  options:
+    command: "python src/quadraticRoots.py"
+    fragment: "(-1.0, -1.0)"
+    count: 1
+    exact: true
+  objectives:
+    CLO2:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write Python program to determine quadratic roots (PLO2)"
+    CLO3:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write Python program to determine quadratic roots (PLO1 & PLO2)"
+# freq.py
+- src/freq.py:
+    - description: Ensure that freq.py file exists in the src/ directory
+      check: ConfirmFileExists
+      objectives:
+        CLO1:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write a Python program to use the Counter library (PLO1)"
+        CLO5:
+          degree:
+            - CMPSC: "D"
+              rationale: "Write a Python program to use the Counter library (PLO2)"
+    - description: No TODOs remain in the freq.py file
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: true
+      objectives:
+        CLO1:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write a Python program to use the Counter library (PLO1)"
+        CLO5:
+          degree:
+            - CMPSC: "D"
+              rationale: "Write a Python program to use the Counter library (PLO2)"
+- description: freq.py main() returns the correct output
+  check: MatchCommandFragment
+  options:
+    command: "python src/freq.py"
+    fragment: "Table of frequencies: Counter({9: 5, 6: 3, 7: 2, 8: 2, 10: 2, 5: 2, 1: 2, 2: 1, 4: 1})"
+    count: 1
+    exact: true
+  objectives:
+    CLO1:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write a Python program to use the Counter library (PLO1)"
+    CLO5:
+      degree:
+        - CMPSC: "D"
+          rationale: "Write a Python program to use the Counter library (PLO2)"
+# genNamesPhoneEmail.py
+- src/genNamesPhoneEmail.py:
+    - description: Ensure that genNamesPhoneEmail.py file exists in the src/ directory
+      check: ConfirmFileExists
+      objectives:
+        CLO4:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write a Python program to process data to return specific values (PLO1)"
+        CLO5:
+          degree:
+            - CMPSC: "D"
+              rationale: "Write a Python program to process data to return specific values (PLO2)"
+    - description: No TODOs remain in the genNamesPhoneEmail.py file
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: true
+      objectives:
+        CLO4:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write a Python program to process data to return specific values (PLO1)"
+        CLO5:
+          degree:
+            - CMPSC: "D"
+              rationale: "Write a Python program to process data to return specific values (PLO2)"
+- description: genNamesPhoneEmail.py main() returns the correct output
+  check: MatchCommandFragment
+  options:
+    command: "python src/genNamesPhoneEmail.py"
+    fragment: "Name: Eve, number : 622-231-2391, email: eve_7@yahoo.com"
+    count: 1
+    exact: true
+  objectives:
+    CLO4:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write a Python program to process data to return specific values (PLO1)"
+    CLO5:
+      degree:
+        - CMPSC: "D"
+          rationale: "Write a Python program to process data to return specific values (PLO2)"
+# probabilities.py
+- src/probabilities.py:
+    - description: Ensure that probabilities.py file exists in the src/ directory
+      check: ConfirmFileExists
+      objectives:
+        CLO2:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write a Python program to calculate probabilities (PLO2)"
+        CLO5:
+          degree:
+            - CMPSC: "D"
+              rationale: "Write a Python program to calculate probabilities (PLO2)"
+    - description: No TODOs remain in the probabilities.py file
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: true
+      objectives:
+        CLO2:
+          degree:
+            - CMPSC: "I"
+              rationale: "Write a Python program to calculate probabilities (PLO2)"
+        CLO5:
+          degree:
+            - CMPSC: "D"
+              rationale: "Write a Python program to calculate probabilities (PLO2)"
+- description: probabilities.py main() returns the correct output
+  check: MatchCommandFragment
+  options:
+    command: "python src/probabilities.py"
+    fragment: "Probability of getting an even number: 1/2, greater than 4: 1/3"
+    count: 1
+    exact: true
+  objectives:
+    CLO2:
+      degree:
+        - CMPSC: "I"
+          rationale: "Write a Python program to calculate probabilities (PLO2)"
+    CLO5:
+      degree:
+        - CMPSC: "D"
+          rationale: "Write a Python program to calculate probabilities (PLO2)"
+# nextprogram
